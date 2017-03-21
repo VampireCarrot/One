@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <data>
+        <variable name="welcome" type="com.bsoft.one.model.Welcome"/>
+
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@color/theme_white"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="120dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/opening_title_image"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_below="@+id/iv_title"
+            app:userface="@{welcome.userface}"/>
+        <TextView
+            android:id="@+id/tv_day"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:text="@{welcome.username}"
+            android:gravity="right|center_vertical"
+            android:paddingRight="15dp"
+            android:textSize="16dp"
+            android:layout_marginBottom="4dp"
+            android:layout_below="@+id/iv_peg"/>
+    </LinearLayout>
+</layout>
