@@ -2,7 +2,7 @@ package com.bsoft.one.ui.welcome;
 
 import com.bsoft.one.base.BasePresenter;
 import com.bsoft.one.base.BaseView;
-import com.bsoft.one.model.IdListBean;
+import com.bsoft.one.model.IdBean;
 
 /**
  * Created by 泅渡者
@@ -13,7 +13,7 @@ public interface WelcomeContract {
     interface View extends BaseView {
         void showUpdate(int drawable,String currentDay);
         void skiActivity();
-        void saveIdlistInsp(IdListBean s);
+        void saveIdlistInsp(IdBean s);
     }
     interface Presenter extends BasePresenter{
         void upDateLogo(int currentWeek,String currentDay);

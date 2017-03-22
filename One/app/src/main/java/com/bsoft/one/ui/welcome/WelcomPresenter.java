@@ -1,14 +1,14 @@
 package com.bsoft.one.ui.welcome;
 
-import android.util.Log;
-
 import com.bsoft.one.R;
-import com.bsoft.one.api.SimpleMyCallBack;
 import com.bsoft.one.base.BaseCommonPresenter;
-import com.bsoft.one.model.HttpExceptionBean;
-import com.bsoft.one.model.IdListBean;
+import com.bsoft.one.model.IdBean;
 
+import rx.Observer;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by 泅渡者
@@ -16,7 +16,6 @@ import rx.Subscription;
  */
 
 public class WelcomPresenter extends BaseCommonPresenter<WelcomeContract.View> implements WelcomeContract.Presenter {
-
     public WelcomPresenter(WelcomeContract.View view) {
         super(view);
     }
@@ -66,20 +65,33 @@ public class WelcomPresenter extends BaseCommonPresenter<WelcomeContract.View> i
     }
     @Override
     public void loadIdlist() {
+        mCompositeSubscription = new CompositeSubscription();
+        Subscription subscription =api.getService().doIdList("wdj", "4.0.2","ffffffff-a90e-706a-63f7-ccf973aae5ee","android")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<IdBean>() {
+                    @Override
+                    public void onCompleted() {
 
-        Subscription subscription = apiImple.getIdList().subscribe(newMySubscriber(new SimpleMyCallBack<IdListBean>() {
-            @Override
-            public void onError(HttpExceptionBean mHttpExceptionBean) {
-                super.onError(mHttpExceptionBean);
-                Log.e("respon",mHttpExceptionBean.toString());
-            }
+                    }
 
-            @Override
-            public void onNext(IdListBean idListBean) {
-                Log.e("respon",idListBean.toString());
-                view.saveIdlistInsp(idListBean);
-            }
-        }));
-      mCompositeSubscription.add(subscription);
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(IdBean idBean) {
+                        view.saveIdlistInsp(idBean);
+                    }
+                });
+        mCompositeSubscription.add(subscription);
+    }
+
+    @Override
+    public void unsubscribe() {
+        super.unsubscribe();
+        if (!mCompositeSubscription.isUnsubscribed())
+            mCompositeSubscription.unsubscribe();
     }
 }

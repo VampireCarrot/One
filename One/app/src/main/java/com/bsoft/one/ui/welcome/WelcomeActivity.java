@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.bsoft.one.R;
 import com.bsoft.one.base.BaseActivity;
 import com.bsoft.one.databinding.ActivityWelcomeBinding;
-import com.bsoft.one.model.IdListBean;
+import com.bsoft.one.model.IdBean;
 import com.bsoft.one.model.Welcome;
 import com.bsoft.one.ui.main.MainActivity;
 import com.bsoft.one.utils.DateUtils;
@@ -27,7 +27,6 @@ public class WelcomeActivity extends BaseActivity<WelcomeContract.Presenter> imp
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         welcomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_welcome);
-        initApi();
         this.createPresenter(new WelcomPresenter(this));
         presenter.upDateLogo(DateUtils.getWeekOfDate(new Date()),DateUtils.getUpperDate(new Date()));
 //        presenter.toNextActivity();
@@ -52,7 +51,7 @@ public class WelcomeActivity extends BaseActivity<WelcomeContract.Presenter> imp
     }
 
     @Override
-    public void saveIdlistInsp(IdListBean s) {
+    public void saveIdlistInsp(IdBean s) {
         Toast.makeText(WelcomeActivity.this,s.toString(),Toast.LENGTH_LONG).show();
     }
 }

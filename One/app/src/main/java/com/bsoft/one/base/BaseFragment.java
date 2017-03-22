@@ -9,20 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bsoft.one.api.ApiImple;
-import com.bsoft.one.api.SimpleMyCallBack;
-
-import rx.Subscriber;
-
 public abstract class BaseFragment <T extends BasePresenter> extends Fragment{
     public BaseActivity mContext;
-    /**
-     * Api类的包装 对象
-     */
-    public ApiImple apiImple;
-
     public  T presenter;
-
     protected ViewDataBinding dataBinding;
     protected abstract  int getLayoutId();
     protected abstract void initBinding(ViewDataBinding binding);
@@ -60,27 +49,12 @@ public abstract class BaseFragment <T extends BasePresenter> extends Fragment{
             this.presenter = presenter;
         }
     }
-
-
     public BaseActivity getBaseActivity() {
         return (BaseActivity) this.getActivity();
     }
-
-    /**
-     * 初始化 Api  更具需要初始化
-     */
-    public void initApi() {
-        apiImple = mContext.getApiImple();
-    }
-
-    public <T> Subscriber newMySubscriber(final SimpleMyCallBack onNext) {
-        return mContext.newMySubscriber(onNext);
-    }
-
     public void showLoadingDialog() {
         mContext.showLoadingDialog();
     }
-
     public void hideLoadingDialog() {
         mContext.hideLoadingDialog();
     }

@@ -4,14 +4,14 @@ import java.util.List;
 
 /**
  * Created by 泅渡者
- * Created on 2017/3/17.
+ * Created on 2017/3/21.
  */
 
-public class IdListBean {
+public class IdBean {
 
     /**
      * res : 0
-     * data : ["3854","3826","3827","3825","3824","3822","3817","3814","3807","3801"]
+     * data : ["3528","3520","3519","3517","3516","3515","3514","3513","3476","3505"]
      */
 
     private int res;
@@ -35,7 +35,7 @@ public class IdListBean {
 
     @Override
     public String toString() {
-        return "IdListBean{" +
+        return "IdBean{" +
                 "res=" + res +
                 ", data=" + data +
                 '}';
