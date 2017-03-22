@@ -1,20 +1,19 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        >
+    >
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView xmlns:tools="http://schemas.android.com/tools"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
-                  tools:context="com.bsoft.one.ui.homeFragment.HomeFragment"
-                  android:orientation="vertical">
-
-<!--        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rcl_home"
+                  android:orientation="vertical"
+                  tools:context="com.bsoft.one.ui.homeFragment.HomeFragment">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="HOME"
-            android:layout_gravity="center"/>
-    </LinearLayout>
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+    </ScrollView>
 </layout>

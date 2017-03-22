@@ -8,7 +8,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+/**
+ * Created by 泅渡者
+ * Created on 2017/3/22.
+ * BaseFragment
+ */
 public abstract class BaseFragment <T extends BasePresenter> extends Fragment{
     public BaseActivity mContext;
     public  T presenter;

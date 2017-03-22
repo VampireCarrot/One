@@ -1,10 +1,9 @@
 package com.bsoft.one.base;
 
 /**
- * User: ZRJ
- * Date: 2016/12/1
- * Email: 471564517@qq.com
- * Description:
+ * Created by 泅渡者
+ * Created on 2017/3/22.
+ * BasePresenter
  */
 public interface BasePresenter {
     void unsubscribe();

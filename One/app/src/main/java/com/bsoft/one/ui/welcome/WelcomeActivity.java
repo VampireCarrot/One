@@ -29,7 +29,7 @@ public class WelcomeActivity extends BaseActivity<WelcomeContract.Presenter> imp
         welcomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_welcome);
         this.createPresenter(new WelcomPresenter(this));
         presenter.upDateLogo(DateUtils.getWeekOfDate(new Date()),DateUtils.getUpperDate(new Date()));
-//        presenter.toNextActivity();
+        presenter.toNextActivity();
         presenter.loadIdlist();
 
     }

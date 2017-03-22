@@ -1,5 +1,7 @@
 package com.bsoft.one.model;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 /**
@@ -35,9 +37,6 @@ public class IdBean {
 
     @Override
     public String toString() {
-        return "IdBean{" +
-                "res=" + res +
-                ", data=" + data +
-                '}';
+        return new Gson().toJson(this);
     }
 }

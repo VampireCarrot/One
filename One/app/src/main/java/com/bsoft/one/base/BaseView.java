@@ -1,7 +1,9 @@
 package com.bsoft.one.base;
 
 /**
- * Created by anzhuo002 on 2016/7/5.
+ * Created by 泅渡者
+ * Created on 2017/3/22.
+ * BaseView
  */
 
 public interface BaseView {

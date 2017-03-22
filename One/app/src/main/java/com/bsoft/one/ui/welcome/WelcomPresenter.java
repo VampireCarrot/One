@@ -8,7 +8,6 @@ import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by 泅渡者
@@ -65,8 +64,7 @@ public class WelcomPresenter extends BaseCommonPresenter<WelcomeContract.View> i
     }
     @Override
     public void loadIdlist() {
-        mCompositeSubscription = new CompositeSubscription();
-        Subscription subscription =api.getService().doIdList("wdj", "4.0.2","ffffffff-a90e-706a-63f7-ccf973aae5ee","android")
+        Subscription subscription =apiImple.getIdList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<IdBean>() {
