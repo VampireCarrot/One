@@ -922,7 +922,32 @@ public class OneListBean {
                             '}';
                 }
             }
-
+            public String chackType(){
+                String tName = "";
+                switch (content_type){
+                    case "0":
+                        tName = "";
+                        break;
+                    case "1":
+                        tName = "- 阅读 -";
+                        break;
+                    case "2":
+                        tName = "- 连载 -";
+                        break;
+                    case "3":
+                        tName = "- 问答 -";
+                        break;
+                    case "4":
+                        tName = "- 音乐 -";
+                        break;
+                    case "5":
+                        tName = "- 电影 -";
+                        break;
+                    default:
+                        break;
+                }
+                return tName;
+            }
             @Override
             public String toString() {
                 return "ContentListBean{" +

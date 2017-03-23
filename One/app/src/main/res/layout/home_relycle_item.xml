@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
         <import type="android.view.View"/>
+
         <import type="com.bsoft.one.model.OneListBean.DataBean.ContentListBean"/>
-        <variable name="ListBean" type="ContentListBean"/>
+
+        <import type="com.bsoft.one.model.OneListBean.DataBean.ContentListBean.AuthorBean"/>
+
+        <variable
+            name="ListBean"
+            type="ContentListBean"/>
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#cdcdcd"
+        android:background="#FFFFFF"
         android:orientation="vertical">
 
         <TextView
@@ -17,9 +26,10 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="@{ListBean.title}"
-            android:visibility="@{Integer.valueOf(ListBean.category)==0 ? View.GONE:View.VISIBLE}"
-            android:textSize="10dp"/>
+            android:hint="-绘画-"
+            android:text="@{ListBean.chackType()}"
+            android:textSize="10dp"
+            android:visibility="@{Integer.valueOf(ListBean.category)==0 ? View.GONE:View.VISIBLE}"/>
 
         <TextView
             android:id="@+id/tv_title"
@@ -27,72 +37,97 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:hint="当时的月亮"
             android:text="@{ListBean.title}"
-            android:textSize="18dp"/>
+            android:textSize="20dp"/>
+
         <TextView
             android:id="@+id/tv_author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:text=""/>
+            android:layout_marginTop="8dp"
+            android:hint="文/鞊麦"
+            android:text="@{ListBean.author.user_name}"
+            android:visibility="@{Integer.valueOf(ListBean.category)==0 ? View.GONE:View.VISIBLE}"/>
+
         <ImageView
             android:id="@+id/iv_pic"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src= "@{ListBean.img_url}"
-            android:scaleType="fitXY"/>
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:scaleType="fitXY"
+            android:src="@{ListBean.img_url}"/>
 
         <TextView
             android:id="@+id/tv_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:text=""/>
+            android:layout_marginTop="10dp"
+            android:lineSpacingExtra="5dp"
+            android:hint="我们每周都会选择一个主题，由七个作者绘制不同风格的短片漫画，每天一副"
+            android:text="@{ListBean.forward}"
+            android:textSize="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:hint="速更省"
+            android:text="@{Integer.valueOf(ListBean.category)==0?ListBean.words_info:ListBean.author.user_name}"
+            android:textSize="8dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_margin="8dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
             android:gravity="center_vertical"
-            android:layout_height="20dp">
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:text="@{ListBean.post_date}"
                 android:textSize="8dp"/>
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="10dp"
                 android:layout_weight="1"/>
+
             <TextView
                 android:id="@+id/tv_like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="8dp"
-                android:text="@{String.valueOf(ListBean.like_count)}"/>
+                android:text="@{String.valueOf(ListBean.like_count)}"
+                android:textSize="8dp"/>
+
             <CheckBox
                 android:id="@+id/cb_like"
-                android:layout_width="32px"
-                android:layout_height="32px"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:button="@null"
                 android:background="@drawable/ck_like"
+                android:button="@null"
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="·"/>
+
             <ImageView
-                android:layout_width="28px"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_height="28px"
                 android:src="@mipmap/feeds_share"
                 />
         </LinearLayout>

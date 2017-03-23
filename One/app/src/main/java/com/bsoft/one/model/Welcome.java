@@ -23,8 +23,6 @@ public class Welcome  extends BaseObservable{
 
     @BindingAdapter("bind:userface")
     public static void  getInternetImage(ImageView iv, int userface) {
-//        Glide.with(iv.getContext()).load(userface).into(iv);
-//        iv.setImageResource(R.drawable.opening_friday);
         iv.setImageResource(userface);
     }
 
