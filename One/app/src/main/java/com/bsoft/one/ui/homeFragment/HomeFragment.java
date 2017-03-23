@@ -1,12 +1,15 @@
 package com.bsoft.one.ui.homeFragment;
 
 import android.databinding.ViewDataBinding;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.bsoft.one.R;
 import com.bsoft.one.adapter.HomeAdapter;
 import com.bsoft.one.base.BaseFragment;
 import com.bsoft.one.databinding.FragmentHomeBinding;
-import com.bsoft.one.model.OneListBean;
+import com.bsoft.one.model.OneListBean.DataBean.ContentListBean;
+
+import java.util.List;
 
 /**
  * Created by 泅渡者
@@ -15,7 +18,6 @@ import com.bsoft.one.model.OneListBean;
 
 public class HomeFragment extends BaseFragment<HomeFragmentContract.Presenter> implements HomeFragmentContract.View{
     private FragmentHomeBinding binding;
-    private HomeAdapter homeAdapter;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_home;
@@ -25,8 +27,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentContract.Presenter> i
         this.binding = (FragmentHomeBinding) binding;
         this.createPresenter(new HomeFragmentPresenter(this));
         presenter.loadOneList();
-//        homeAdapter = new HomeAdapter();
-//        this.binding.rclHome.setAdapter(homeAdapter);
+
     }
 
     @Override
@@ -40,8 +41,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentContract.Presenter> i
     }
 
     @Override
-    public void showMessage(OneListBean oneListBean) {
-        binding.tvData.setText(oneListBean.toString());
+    public void showMessage(List<ContentListBean> res) {
+        binding.rlOne.setAdapter(new HomeAdapter(getActivity(),res));
+        binding.rlOne.setLayoutManager(new LinearLayoutManager(getActivity()));//这里用线性显示 类似于listview
+        //mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));//这里用线性宫格显示 类似于grid view
+        //mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));//这里用线性宫格显示 类似于瀑布流
     }
 
 }

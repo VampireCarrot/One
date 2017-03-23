@@ -45,14 +45,14 @@ public abstract class BaseFragment <T extends BasePresenter> extends Fragment{
         }
     }
 
-    /**
-     * 创建相应的 presenter
-     */
-    public void createPresenter(T presenter) {
-        if (presenter != null) {
-            this.presenter = presenter;
+        /**
+         * 创建相应的 presenter
+         */
+        public void createPresenter(T presenter) {
+            if (presenter != null) {
+                this.presenter = presenter;
+            }
         }
-    }
     public BaseActivity getBaseActivity() {
         return (BaseActivity) this.getActivity();
     }

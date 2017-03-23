@@ -1,7 +1,5 @@
 package com.bsoft.one.ui.homeFragment;
 
-import android.util.Log;
-
 import com.bsoft.one.api.SimpleMyCallBack;
 import com.bsoft.one.base.BaseCommonPresenter;
 import com.bsoft.one.model.HttpExceptionBean;
@@ -30,8 +28,7 @@ public class HomeFragmentPresenter extends BaseCommonPresenter<HomeFragmentContr
 
                     @Override
                     public void onNext(OneListBean oneListBean) {
-                        Log.d("AAAA",oneListBean.toString());
-                            view.showMessage(oneListBean);
+                        view.showMessage(oneListBean.getData().getContent_list());
                     }
                 }));
         mCompositeSubscription.add(subscription);

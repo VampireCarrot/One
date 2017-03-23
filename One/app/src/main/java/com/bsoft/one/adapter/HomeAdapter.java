@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.bsoft.one.R;
 import com.bsoft.one.databinding.HomeRelycleItemBinding;
-import com.bsoft.one.model.HomeBean;
+import com.bsoft.one.model.OneListBean.DataBean.ContentListBean;
 
 import java.util.List;
 
@@ -20,18 +20,21 @@ import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private Context context;
-    private List<HomeBean> homeBeanList;
+    private List<ContentListBean> homeBeanList;
+
+    public HomeAdapter(Context context, List<ContentListBean> homeBeanList) {
+        this.context = context;
+        this.homeBeanList = homeBeanList;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        HomeRelycleItemBinding binding1 = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.home_relycle_item, parent, false);
-        return new ViewHolder(binding1);
+        return ViewHolder.create(LayoutInflater.from(context), parent);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.getBinding().tvTitle.setText("");
-        holder.getBinding().executePendingBindings();
+            holder.bindTo(homeBeanList.get(position));
     }
 
     @Override
@@ -39,16 +42,19 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         return homeBeanList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        private HomeRelycleItemBinding binding;
-
-        public ViewHolder(HomeRelycleItemBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private HomeRelycleItemBinding mBinding;
+        static ViewHolder create(LayoutInflater inflater, ViewGroup parent) {
+            HomeRelycleItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.home_relycle_item, parent, false);
+            return new ViewHolder(binding);
         }
-
-        public HomeRelycleItemBinding getBinding() {
-            return binding;
+        private ViewHolder(HomeRelycleItemBinding binding) {
+            super(binding.getRoot());
+            mBinding = binding;
+        }
+        public void bindTo(ContentListBean user) {
+            mBinding.setListBean(user);
+            mBinding.executePendingBindings();
         }
     }
 }

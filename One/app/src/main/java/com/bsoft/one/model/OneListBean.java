@@ -1,6 +1,9 @@
 package com.bsoft.one.model;
 
-import com.google.gson.Gson;
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -13,7 +16,7 @@ public class OneListBean {
 
     /**
      * res : 0
-     * data : {"id":"3528","weather":{"city_name":"地球","date":"2017-01-08","temperature":"-275","humidity":"120","climate":"对流层","wind_direction":"一阵妖风","hurricane":"36级","icons":{"day":"weather_icon_unknown","night":"weather_icon_unknown_night"}},"date":"2017-01-08 06:00:00","content_list":[{"id":"9245","category":"1","display_category":6,"item_id":"1701","title":"Essay | 好景常在的香港铺子","forward":"景全是小景，因和日常相关，也更入眼入心，香港的铺子，好景常在。","img_url":"http://image.wufazhuce.com/FhjH_HTkqt9L6ex1jMO_n5p3DhtC","like_count":63,"post_date":"2017-01-08 06:00:00","last_update_date":"2017-01-06 18:49:09","author":{"user_id":"7432465","user_name":"葛亮","desc":"最会说故事的小说家。《北鸢》《朱雀》热销中。","wb_name":"@葛亮。","is_settled":"0","settled_type":"0","summary":"最会说故事的小说家《北鸢》《朱雀》热销中","fans_total":"177","web_url":"http://image.wufazhuce.com/FnYU1C_xIe6c5LfF6SlXd6hFk41L"},"video_url":"","audio_url":"","audio_platform":2,"start_video":"http://music.wufazhuce.com/lnuEMrktDTjm2lq4_s3k-FP9-6On","volume":0,"pic_info":"","words_info":"","subtitle":"","number":0,"serial_id":0,"serial_list":[],"movie_story_id":0,"ad_id":0,"ad_type":0,"ad_pvurl":"","ad_linkurl":"","ad_makettime":"","ad_closetime":"","ad_share_cnt":"","ad_pvurl_vendor":"","content_id":"1701","content_type":"1","content_bgcolor":"#FFFFFF","share_url":"http://m.wufazhuce.com/article/1701","share_info":{"url":"http://m.wufazhuce.com/article/1701","image":"http://image.wufazhuce.com/FhjH_HTkqt9L6ex1jMO_n5p3DhtC","title":"香港的铺子，好景常在 作者/葛亮","content":"景全是小景，因和日常相关，也更入眼入心。"}}]}
+     * data : {"id":"3853","weather":{"city_name":"地球","date":"2017-03-23","temperature":"-275","humidity":"120","climate":"对流层","wind_direction":"一阵妖风","hurricane":"36级","icons":{"day":"weather_icon_unknown","night":"weather_icon_unknown_night"}},"date":"2017-03-22 06:00:00","content_list":[{"id":"10653","category":"0","display_category":6,"item_id":"1655","title":"插画","forward":"人会孤独，是因为我们只有一颗心脏，却渴望和另一颗心脏同时跳动。","img_url":"http://image.wufazhuce.com/Fp9rWuDoB48eLRwbRnKIgn5o2CwU","like_count":13576,"post_date":"2017-03-22 06:00:00","last_update_date":"2017-03-20 11:47:22","author":{},"video_url":"","audio_url":"","audio_platform":2,"start_video":"","volume":"VOL.1628","pic_info":"我是白","words_info":"苏更生","subtitle":"","number":0,"serial_id":0,"serial_list":[],"movie_story_id":0,"ad_id":0,"ad_type":0,"ad_pvurl":"","ad_linkurl":"","ad_makettime":"","ad_closetime":"","ad_share_cnt":"","ad_pvurl_vendor":"","content_id":"1655","content_type":"0","content_bgcolor":"#FFFFFF","share_url":"http://m.wufazhuce.com/one/1655","share_info":{"url":"http://m.wufazhuce.com/one/1655","image":"http://image.wufazhuce.com/Fp9rWuDoB48eLRwbRnKIgn5o2CwU","title":"VOL.1628","content":"人会孤独，是因为我们只有一颗心脏，却渴望和另一颗心脏同时跳动。"},"share_list":{"wx":{"title":"","desc":"","link":"","imgUrl":""},"weibo":{"title":"ONE·一个 人会孤独，是因为我们只有一颗心脏，却渴望和另一颗心脏同时跳动。\u2014\u2014苏更生 下载ONE·一个APP:http://weibo.com/p/100404157874","desc":"","link":"","imgUrl":""},"qq":{"title":"","desc":"","link":"","imgUrl":""}},"tag_list":[],"orientation":"0"}]}
      */
 
     private int res;
@@ -37,10 +40,10 @@ public class OneListBean {
 
     public static class DataBean {
         /**
-         * id : 3528
-         * weather : {"city_name":"地球","date":"2017-01-08","temperature":"-275","humidity":"120","climate":"对流层","wind_direction":"一阵妖风","hurricane":"36级","icons":{"day":"weather_icon_unknown","night":"weather_icon_unknown_night"}}
-         * date : 2017-01-08 06:00:00
-         * content_list : [{"id":"9245","category":"1","display_category":6,"item_id":"1701","title":"Essay | 好景常在的香港铺子","forward":"景全是小景，因和日常相关，也更入眼入心，香港的铺子，好景常在。","img_url":"http://image.wufazhuce.com/FhjH_HTkqt9L6ex1jMO_n5p3DhtC","like_count":63,"post_date":"2017-01-08 06:00:00","last_update_date":"2017-01-06 18:49:09","author":{"user_id":"7432465","user_name":"葛亮","desc":"最会说故事的小说家。《北鸢》《朱雀》热销中。","wb_name":"@葛亮。","is_settled":"0","settled_type":"0","summary":"最会说故事的小说家《北鸢》《朱雀》热销中","fans_total":"177","web_url":"http://image.wufazhuce.com/FnYU1C_xIe6c5LfF6SlXd6hFk41L"},"video_url":"","audio_url":"","audio_platform":2,"start_video":"http://music.wufazhuce.com/lnuEMrktDTjm2lq4_s3k-FP9-6On","volume":0,"pic_info":"","words_info":"","subtitle":"","number":0,"serial_id":0,"serial_list":[],"movie_story_id":0,"ad_id":0,"ad_type":0,"ad_pvurl":"","ad_linkurl":"","ad_makettime":"","ad_closetime":"","ad_share_cnt":"","ad_pvurl_vendor":"","content_id":"1701","content_type":"1","content_bgcolor":"#FFFFFF","share_url":"http://m.wufazhuce.com/article/1701","share_info":{"url":"http://m.wufazhuce.com/article/1701","image":"http://image.wufazhuce.com/FhjH_HTkqt9L6ex1jMO_n5p3DhtC","title":"香港的铺子，好景常在 作者/葛亮","content":"景全是小景，因和日常相关，也更入眼入心。"}}]
+         * id : 3853
+         * weather : {"city_name":"地球","date":"2017-03-23","temperature":"-275","humidity":"120","climate":"对流层","wind_direction":"一阵妖风","hurricane":"36级","icons":{"day":"weather_icon_unknown","night":"weather_icon_unknown_night"}}
+         * date : 2017-03-22 06:00:00
+         * content_list : [{"id":"10653","category":"0","display_category":6,"item_id":"1655","title":"插画","forward":"人会孤独，是因为我们只有一颗心脏，却渴望和另一颗心脏同时跳动。","img_url":"http://image.wufazhuce.com/Fp9rWuDoB48eLRwbRnKIgn5o2CwU","like_count":13576,"post_date":"2017-03-22 06:00:00","last_update_date":"2017-03-20 11:47:22","author":{},"video_url":"","audio_url":"","audio_platform":2,"start_video":"","volume":"VOL.1628","pic_info":"我是白","words_info":"苏更生","subtitle":"","number":0,"serial_id":0,"serial_list":[],"movie_story_id":0,"ad_id":0,"ad_type":0,"ad_pvurl":"","ad_linkurl":"","ad_makettime":"","ad_closetime":"","ad_share_cnt":"","ad_pvurl_vendor":"","content_id":"1655","content_type":"0","content_bgcolor":"#FFFFFF","share_url":"http://m.wufazhuce.com/one/1655","share_info":{"url":"http://m.wufazhuce.com/one/1655","image":"http://image.wufazhuce.com/Fp9rWuDoB48eLRwbRnKIgn5o2CwU","title":"VOL.1628","content":"人会孤独，是因为我们只有一颗心脏，却渴望和另一颗心脏同时跳动。"},"share_list":{"wx":{"title":"","desc":"","link":"","imgUrl":""},"weibo":{"title":"ONE·一个 人会孤独，是因为我们只有一颗心脏，却渴望和另一颗心脏同时跳动。\u2014\u2014苏更生 下载ONE·一个APP:http://weibo.com/p/100404157874","desc":"","link":"","imgUrl":""},"qq":{"title":"","desc":"","link":"","imgUrl":""}},"tag_list":[],"orientation":"0"}]
          */
 
         private String id;
@@ -83,7 +86,7 @@ public class OneListBean {
         public static class WeatherBean {
             /**
              * city_name : 地球
-             * date : 2017-01-08
+             * date : 2017-03-23
              * temperature : -275
              * humidity : 120
              * climate : 对流层
@@ -189,67 +192,10 @@ public class OneListBean {
                 public void setNight(String night) {
                     this.night = night;
                 }
-                @Override
-                public String toString() {
-                    return new Gson().toJson(this);
-                }
-            }
-
-            @Override
-            public String toString() {
-                return "WeatherBean{" +
-                        "city_name='" + city_name + '\'' +
-                        ", date='" + date + '\'' +
-                        ", temperature='" + temperature + '\'' +
-                        ", humidity='" + humidity + '\'' +
-                        ", climate='" + climate + '\'' +
-                        ", wind_direction='" + wind_direction + '\'' +
-                        ", hurricane='" + hurricane + '\'' +
-                        ", icons=" + icons +
-                        '}';
             }
         }
 
         public static class ContentListBean {
-            /**
-             * id : 9245
-             * category : 1
-             * display_category : 6
-             * item_id : 1701
-             * title : Essay | 好景常在的香港铺子
-             * forward : 景全是小景，因和日常相关，也更入眼入心，香港的铺子，好景常在。
-             * img_url : http://image.wufazhuce.com/FhjH_HTkqt9L6ex1jMO_n5p3DhtC
-             * like_count : 63
-             * post_date : 2017-01-08 06:00:00
-             * last_update_date : 2017-01-06 18:49:09
-             * author : {"user_id":"7432465","user_name":"葛亮","desc":"最会说故事的小说家。《北鸢》《朱雀》热销中。","wb_name":"@葛亮。","is_settled":"0","settled_type":"0","summary":"最会说故事的小说家《北鸢》《朱雀》热销中","fans_total":"177","web_url":"http://image.wufazhuce.com/FnYU1C_xIe6c5LfF6SlXd6hFk41L"}
-             * video_url :
-             * audio_url :
-             * audio_platform : 2
-             * start_video : http://music.wufazhuce.com/lnuEMrktDTjm2lq4_s3k-FP9-6On
-             * volume : 0
-             * pic_info :
-             * words_info :
-             * subtitle :
-             * number : 0
-             * serial_id : 0
-             * serial_list : []
-             * movie_story_id : 0
-             * ad_id : 0
-             * ad_type : 0
-             * ad_pvurl :
-             * ad_linkurl :
-             * ad_makettime :
-             * ad_closetime :
-             * ad_share_cnt :
-             * ad_pvurl_vendor :
-             * content_id : 1701
-             * content_type : 1
-             * content_bgcolor : #FFFFFF
-             * share_url : http://m.wufazhuce.com/article/1701
-             * share_info : {"url":"http://m.wufazhuce.com/article/1701","image":"http://image.wufazhuce.com/FhjH_HTkqt9L6ex1jMO_n5p3DhtC","title":"香港的铺子，好景常在 作者/葛亮","content":"景全是小景，因和日常相关，也更入眼入心。"}
-             */
-
             private String id;
             private String category;
             private int display_category;
@@ -265,7 +211,7 @@ public class OneListBean {
             private String audio_url;
             private int audio_platform;
             private String start_video;
-            private int volume;
+            private String volume;
             private String pic_info;
             private String words_info;
             private String subtitle;
@@ -285,7 +231,10 @@ public class OneListBean {
             private String content_bgcolor;
             private String share_url;
             private ShareInfoBean share_info;
+            private ShareListBean share_list;
+            private String orientation;
             private List<?> serial_list;
+            private List<?> tag_list;
 
             public String getId() {
                 return id;
@@ -407,11 +356,11 @@ public class OneListBean {
                 this.start_video = start_video;
             }
 
-            public int getVolume() {
+            public String getVolume() {
                 return volume;
             }
 
-            public void setVolume(int volume) {
+            public void setVolume(String volume) {
                 this.volume = volume;
             }
 
@@ -567,6 +516,22 @@ public class OneListBean {
                 this.share_info = share_info;
             }
 
+            public ShareListBean getShare_list() {
+                return share_list;
+            }
+
+            public void setShare_list(ShareListBean share_list) {
+                this.share_list = share_list;
+            }
+
+            public String getOrientation() {
+                return orientation;
+            }
+
+            public void setOrientation(String orientation) {
+                this.orientation = orientation;
+            }
+
             public List<?> getSerial_list() {
                 return serial_list;
             }
@@ -575,17 +540,26 @@ public class OneListBean {
                 this.serial_list = serial_list;
             }
 
+            public List<?> getTag_list() {
+                return tag_list;
+            }
+
+            public void setTag_list(List<?> tag_list) {
+                this.tag_list = tag_list;
+            }
+
             public static class AuthorBean {
+
                 /**
-                 * user_id : 7432465
-                 * user_name : 葛亮
-                 * desc : 最会说故事的小说家。《北鸢》《朱雀》热销中。
-                 * wb_name : @葛亮。
+                 * user_id : 4813479
+                 * user_name : 荞麦
+                 * desc : 「一个」常驻作家。最新随笔集《当一切在我们周围暗下来》。
+                 * wb_name : @荞麦chen
                  * is_settled : 0
                  * settled_type : 0
-                 * summary : 最会说故事的小说家《北鸢》《朱雀》热销中
-                 * fans_total : 177
-                 * web_url : http://image.wufazhuce.com/FnYU1C_xIe6c5LfF6SlXd6hFk41L
+                 * summary : 「一个」常驻作家。最新随笔集《当一切在我们周围暗下来》。
+                 * fans_total : 660
+                 * web_url : http://image.wufazhuce.com/FsRokzycWWx_CucHTFUN4OFBh5s6
                  */
 
                 private String user_id;
@@ -688,10 +662,10 @@ public class OneListBean {
 
             public static class ShareInfoBean {
                 /**
-                 * url : http://m.wufazhuce.com/article/1701
-                 * image : http://image.wufazhuce.com/FhjH_HTkqt9L6ex1jMO_n5p3DhtC
-                 * title : 香港的铺子，好景常在 作者/葛亮
-                 * content : 景全是小景，因和日常相关，也更入眼入心。
+                 * url : http://m.wufazhuce.com/one/1655
+                 * image : http://image.wufazhuce.com/Fp9rWuDoB48eLRwbRnKIgn5o2CwU
+                 * title : VOL.1628
+                 * content : 人会孤独，是因为我们只有一颗心脏，却渴望和另一颗心脏同时跳动。
                  */
 
                 private String url;
@@ -742,6 +716,213 @@ public class OneListBean {
                 }
             }
 
+            public static class ShareListBean {
+                private WxBean wx;
+                private WeiboBean weibo;
+                private QqBean qq;
+
+                public WxBean getWx() {
+                    return wx;
+                }
+
+                public void setWx(WxBean wx) {
+                    this.wx = wx;
+                }
+
+                public WeiboBean getWeibo() {
+                    return weibo;
+                }
+
+                public void setWeibo(WeiboBean weibo) {
+                    this.weibo = weibo;
+                }
+
+                public QqBean getQq() {
+                    return qq;
+                }
+
+                public void setQq(QqBean qq) {
+                    this.qq = qq;
+                }
+
+                public static class WxBean {
+                    /**
+                     * title :
+                     * desc :
+                     * link :
+                     * imgUrl :
+                     */
+
+                    private String title;
+                    private String desc;
+                    private String link;
+                    private String imgUrl;
+
+                    public String getTitle() {
+                        return title;
+                    }
+
+                    public void setTitle(String title) {
+                        this.title = title;
+                    }
+
+                    public String getDesc() {
+                        return desc;
+                    }
+
+                    public void setDesc(String desc) {
+                        this.desc = desc;
+                    }
+
+                    public String getLink() {
+                        return link;
+                    }
+
+                    public void setLink(String link) {
+                        this.link = link;
+                    }
+
+                    public String getImgUrl() {
+                        return imgUrl;
+                    }
+
+                    public void setImgUrl(String imgUrl) {
+                        this.imgUrl = imgUrl;
+                    }
+
+                    @Override
+                    public String toString() {
+                        return "WxBean{" +
+                                "title='" + title + '\'' +
+                                ", desc='" + desc + '\'' +
+                                ", link='" + link + '\'' +
+                                ", imgUrl='" + imgUrl + '\'' +
+                                '}';
+                    }
+                }
+
+                public static class WeiboBean {
+                    /**
+                     * title : ONE·一个 人会孤独，是因为我们只有一颗心脏，却渴望和另一颗心脏同时跳动。——苏更生 下载ONE·一个APP:http://weibo.com/p/100404157874
+                     * desc :
+                     * link :
+                     * imgUrl :
+                     */
+
+                    private String title;
+                    private String desc;
+                    private String link;
+                    private String imgUrl;
+
+                    public String getTitle() {
+                        return title;
+                    }
+
+                    public void setTitle(String title) {
+                        this.title = title;
+                    }
+
+                    public String getDesc() {
+                        return desc;
+                    }
+
+                    public void setDesc(String desc) {
+                        this.desc = desc;
+                    }
+
+                    public String getLink() {
+                        return link;
+                    }
+
+                    public void setLink(String link) {
+                        this.link = link;
+                    }
+
+                    public String getImgUrl() {
+                        return imgUrl;
+                    }
+
+                    public void setImgUrl(String imgUrl) {
+                        this.imgUrl = imgUrl;
+                    }
+
+                    @Override
+                    public String toString() {
+                        return "WeiboBean{" +
+                                "title='" + title + '\'' +
+                                ", desc='" + desc + '\'' +
+                                ", link='" + link + '\'' +
+                                ", imgUrl='" + imgUrl + '\'' +
+                                '}';
+                    }
+                }
+
+                public static class QqBean {
+                    /**
+                     * title :
+                     * desc :
+                     * link :
+                     * imgUrl :
+                     */
+
+                    private String title;
+                    private String desc;
+                    private String link;
+                    private String imgUrl;
+
+                    public String getTitle() {
+                        return title;
+                    }
+
+                    public void setTitle(String title) {
+                        this.title = title;
+                    }
+
+                    public String getDesc() {
+                        return desc;
+                    }
+
+                    public void setDesc(String desc) {
+                        this.desc = desc;
+                    }
+
+                    public String getLink() {
+                        return link;
+                    }
+
+                    public void setLink(String link) {
+                        this.link = link;
+                    }
+
+                    public String getImgUrl() {
+                        return imgUrl;
+                    }
+
+                    public void setImgUrl(String imgUrl) {
+                        this.imgUrl = imgUrl;
+                    }
+
+                    @Override
+                    public String toString() {
+                        return "QqBean{" +
+                                "title='" + title + '\'' +
+                                ", desc='" + desc + '\'' +
+                                ", link='" + link + '\'' +
+                                ", imgUrl='" + imgUrl + '\'' +
+                                '}';
+                    }
+                }
+
+                @Override
+                public String toString() {
+                    return "ShareListBean{" +
+                            "wx=" + wx +
+                            ", weibo=" + weibo +
+                            ", qq=" + qq +
+                            '}';
+                }
+            }
+
             @Override
             public String toString() {
                 return "ContentListBean{" +
@@ -760,7 +941,7 @@ public class OneListBean {
                         ", audio_url='" + audio_url + '\'' +
                         ", audio_platform=" + audio_platform +
                         ", start_video='" + start_video + '\'' +
-                        ", volume=" + volume +
+                        ", volume='" + volume + '\'' +
                         ", pic_info='" + pic_info + '\'' +
                         ", words_info='" + words_info + '\'' +
                         ", subtitle='" + subtitle + '\'' +
@@ -780,27 +961,16 @@ public class OneListBean {
                         ", content_bgcolor='" + content_bgcolor + '\'' +
                         ", share_url='" + share_url + '\'' +
                         ", share_info=" + share_info +
+                        ", share_list=" + share_list +
+                        ", orientation='" + orientation + '\'' +
                         ", serial_list=" + serial_list +
+                        ", tag_list=" + tag_list +
                         '}';
             }
         }
-
-        @Override
-        public String toString() {
-            return "DataBean{" +
-                    "id='" + id + '\'' +
-                    ", weather=" + weather +
-                    ", date='" + date + '\'' +
-                    ", content_list=" + content_list +
-                    '}';
-        }
     }
-
-    @Override
-    public String toString() {
-        return "OneListBean{" +
-                "res=" + res +
-                ", data=" + data +
-                '}';
+    @BindingAdapter("android:src")
+    public static void setImageUrl(ImageView view, String url) {
+        Glide.with(view.getContext()).load(url).into(view);
     }
 }

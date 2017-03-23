@@ -1,8 +1,7 @@
 package com.bsoft.one.api;
 
-import android.util.Log;
-
 import com.bsoft.one.common.MyApplication;
+import com.bsoft.one.utils.LogUtil;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -67,7 +66,7 @@ public class Api {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                Log.e("HttpLog", message);
+                LogUtil.g("HttpLog", message);
             }
         });
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
