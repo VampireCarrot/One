@@ -57,4 +57,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             mBinding.executePendingBindings();
         }
     }
+    public void notifyDat(List<ContentListBean> res){
+        for(ContentListBean contentListBean:res){
+            this.homeBeanList.add(contentListBean);
+        }
+        notifyDataSetChanged();
+    }
 }

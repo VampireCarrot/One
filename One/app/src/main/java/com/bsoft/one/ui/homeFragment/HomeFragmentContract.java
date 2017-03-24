@@ -13,9 +13,11 @@ import java.util.List;
 
 public interface HomeFragmentContract {
     interface View extends BaseView{
+        void saveIdArray(List<String> strings);
         void showMessage(List<ContentListBean> listBeen);
     }
     interface Presenter extends BasePresenter{
-        void loadOneList();
+        void loadIdList();
+        void loadOneList(String OneId);
     }
 }

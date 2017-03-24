@@ -17,8 +17,8 @@ public class ApiImple extends Api {
     public Observable<IdBean> getIdList(){
         return applySchedulers(getService().doIdList("wdj", "4.0.2","ffffffff-a90e-706a-63f7-ccf973aae5ee","android"));
     };
-    public Observable<OneListBean> getOneList(){
-        return applySchedulers(getService().doOneList("3858"));
+    public Observable<OneListBean> getOneList(String id){
+        return applySchedulers(getService().doOneList(id));
     }
 
 }

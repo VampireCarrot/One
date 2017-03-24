@@ -3,9 +3,12 @@ package com.bsoft.one.ui.homeFragment;
 import com.bsoft.one.api.SimpleMyCallBack;
 import com.bsoft.one.base.BaseCommonPresenter;
 import com.bsoft.one.model.HttpExceptionBean;
+import com.bsoft.one.model.IdBean;
 import com.bsoft.one.model.OneListBean;
 
-import rx.Subscription;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by 泅渡者
@@ -18,8 +21,32 @@ public class HomeFragmentPresenter extends BaseCommonPresenter<HomeFragmentContr
     }
 
     @Override
-    public void loadOneList() {
-        Subscription subscription = apiImple.getOneList()
+    public void loadIdList() {
+        mCompositeSubscription.add(apiImple.getIdList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<IdBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(IdBean idBean) {
+                        view.saveIdArray(idBean.getData());
+                    }
+                }));
+    }
+
+    @Override
+    public void loadOneList(String oneid) {
+
+        mCompositeSubscription.add(apiImple.getOneList(oneid)
                 .subscribe(newMySubscriber(new SimpleMyCallBack<OneListBean>() {
                     @Override
                     public void onError(HttpExceptionBean mHttpExceptionBean) {
@@ -30,8 +57,7 @@ public class HomeFragmentPresenter extends BaseCommonPresenter<HomeFragmentContr
                     public void onNext(OneListBean oneListBean) {
                         view.showMessage(oneListBean.getData().getContent_list());
                     }
-                }));
-        mCompositeSubscription.add(subscription);
+                })));
 
     }
 }
