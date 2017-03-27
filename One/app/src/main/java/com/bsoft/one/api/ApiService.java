@@ -2,6 +2,7 @@ package com.bsoft.one.api;
 
 import com.bsoft.one.model.IdBean;
 import com.bsoft.one.model.OneListBean;
+import com.bsoft.one.model.OneReadInfo;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -21,4 +22,7 @@ public interface ApiService {
 
     @GET("onelist/{idList}/0?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android")
     Observable<OneListBean> doOneList(@Path("idList") String idList);
+
+    @GET("essay/{item_id}/?channel=wdj&source=summary&source_id=9261&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android")
+    Observable<OneReadInfo> doOneReadInfo(@Path("item_id") String item_id);
 }

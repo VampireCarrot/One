@@ -3,6 +3,7 @@ package com.bsoft.one.api;
 
 import com.bsoft.one.model.IdBean;
 import com.bsoft.one.model.OneListBean;
+import com.bsoft.one.model.OneReadInfo;
 
 import rx.Observable;
 
@@ -19,6 +20,9 @@ public class ApiImple extends Api {
     };
     public Observable<OneListBean> getOneList(String id){
         return applySchedulers(getService().doOneList(id));
+    }
+    public Observable<OneReadInfo> getOneRead(String item_id){
+        return applySchedulers(getService().doOneReadInfo(item_id));
     }
 
 }

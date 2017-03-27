@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.bsoft.one.model.OneReadInfo"/>
+        <variable
+            name="OneInfo"
+            type="OneReadInfo"/>
+        <variable
+            name="Title"
+            type="String"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="#FFFFFF"
+                  android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp">
+
+            <ImageView
+                android:id="@+id/iv_left"
+                android:layout_width="49dp"
+                android:layout_height="wrap_content"
+                android:onClick="menuLeft"
+                android:padding="12dp"
+                android:src="@drawable/return_image_4_0"/>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@{Title}"
+                android:textColor="#CDCDCD"/>
+
+            <LinearLayout
+                android:id="@+id/ll_reading"
+                android:layout_width="49dp"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/ll_right"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/cb_read"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ck_read"
+                    android:button="@null"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_right"
+                android:layout_width="49dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:onClick="menuRight">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@mipmap/search"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CDCDCD"/>
+        <!--正文布局-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:id="@+id/sl_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{OneInfo.data.hp_title}"
+                        android:textColor="#000000"
+                        android:textSize="20dp"/>
+
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#000000"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_tauthor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@{OneInfo.data.hp_author}"
+                        android:textColor="#414141"/>
+
+                    <WebView
+                        android:id="@+id/wb_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="60dp"
+                        android:layout_marginTop="18dp"/>
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/ll_author"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                android:background="#4A4A4A"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@{OneInfo.data.author.get(0).web_url}"
+                    />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{OneInfo.data.hp_author}"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@{OneInfo.data.author.get(0).summary}"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/attention_sportq_bg"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="关注"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10dp"/>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

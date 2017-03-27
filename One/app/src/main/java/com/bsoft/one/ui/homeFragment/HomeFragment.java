@@ -1,14 +1,17 @@
 package com.bsoft.one.ui.homeFragment;
 
+import android.content.Intent;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.bsoft.one.R;
 import com.bsoft.one.adapter.HomeAdapter;
 import com.bsoft.one.base.BaseFragment;
 import com.bsoft.one.databinding.FragmentHomeBinding;
 import com.bsoft.one.model.OneListBean.DataBean.ContentListBean;
+import com.bsoft.one.ui.homeDetailActivity.HomeDetailActivity;
 import com.bsoft.one.widget.RecycleViewDivider;
 
 import java.util.ArrayList;
@@ -24,7 +27,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentContract.Presenter> i
     private List<String> idList;
     private HomeAdapter homeAdapter;
     private List<ContentListBean> res;
-    private int Page = 1;
+    private int Page = 0;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_home;
@@ -57,11 +60,25 @@ public class HomeFragment extends BaseFragment<HomeFragmentContract.Presenter> i
                 if(newState == RecyclerView.SCROLL_STATE_IDLE){
                     int lastVisiblePosition = linearLayoutManager.findLastVisibleItemPosition();
                     if(lastVisiblePosition >= linearLayoutManager.getItemCount() - 1){
-                        Page++;
                         if(Page < idList.size())
                         presenter.loadOneList(idList.get(Page));
+                        Page++;
                     }
                 }
+            }
+        });
+
+        homeAdapter.setOnItemClickLitener(new HomeAdapter.OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent();
+                intent.putExtra("item_id",res.get(position).getItem_id());
+                intent.putExtra("title",res.get(position).chackType());
+                if(res.get(position).getContent_type().equals("1")){
+                    intent.setClass(getActivity(),HomeDetailActivity.class);
+                    getActivity().startActivity(intent);
+                }
+
             }
         });
     }
